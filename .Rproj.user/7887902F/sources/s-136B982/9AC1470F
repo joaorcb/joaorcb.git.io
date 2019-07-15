@@ -5,15 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3615040622",
+    "hash" : "0",
     "id" : "9AC1470F",
-    "lastKnownWriteTime" : 1563210434,
-    "last_content_update" : 1563210434283,
+    "lastKnownWriteTime" : 1563213729,
+    "last_content_update" : 1563213729674,
     "path" : "~/joaorcb.git.io/content/post/2019-07-15-maddison.rmd",
     "project_path" : "content/post/2019-07-15-maddison.rmd",
     "properties" : {
-        "cursorPosition" : "3,42",
-        "scrollLine" : "0"
+        "cursorPosition" : "112,0",
+        "last_setup_crc32" : "136B982bb338d19",
+        "scrollLine" : "102"
     },
     "read_only" : false,
     "read_only_alternatives" : [
