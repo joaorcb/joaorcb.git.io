@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1563209917591.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9CE0CB9C",
+    "lastKnownWriteTime" : 1563210447,
+    "last_content_update" : 1563210447134,
+    "path" : "~/joaorcb.git.io/content/about.md",
+    "project_path" : "content/about.md",
+    "properties" : {
+        "cursorPosition" : "5,40",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<title>GDP per Cap visualization with Maddison and gganimate - A Hugo website</title>
+<meta property="og:title" content="GDP per Cap visualization with Maddison and gganimate - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">GDP per Cap visualization with Maddison and gganimate</h1>
+
+    
+    <span class="article-date">0001-01-01</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>This is a quick blog showing how to create animated graphs with R and gganimate.</p>
+<p>First, lets load some packages and define our theme using the ggtheme package for ggplot.</p>
+<pre class="r"><code>library(maddison)
+library(tidyverse)
+library(directlabels)
+library(lubridate)
+library(gganimate)
+library(gifski)
+library(png)
+
+library(ggthemes)
+theme_set(theme_economist())</code></pre>
+<p>Now, let’s see our data… and subset what we want</p>
+<pre class="r"><code>glimpse(maddison)</code></pre>
+<pre><code>## Observations: 45,318
+## Variables: 9
+## $ year             &lt;date&gt; 0001-01-01, 0730-01-01, 1000-01-01, 1150-01-...
+## $ country_original &lt;chr&gt; &quot;Austria&quot;, &quot;Austria&quot;, &quot;Austria&quot;, &quot;Austria&quot;, &quot;...
+## $ gdp_pc           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+## $ country          &lt;chr&gt; &quot;Austria&quot;, &quot;Austria&quot;, &quot;Austria&quot;, &quot;Austria&quot;, &quot;...
+## $ iso2c            &lt;chr&gt; &quot;AT&quot;, &quot;AT&quot;, &quot;AT&quot;, &quot;AT&quot;, &quot;AT&quot;, &quot;AT&quot;, &quot;AT&quot;, &quot;AT...
+## $ iso3c            &lt;chr&gt; &quot;AUT&quot;, &quot;AUT&quot;, &quot;AUT&quot;, &quot;AUT&quot;, &quot;AUT&quot;, &quot;AUT&quot;, &quot;AU...
+## $ continent        &lt;chr&gt; &quot;Europe&quot;, &quot;Europe&quot;, &quot;Europe&quot;, &quot;Europe&quot;, &quot;Euro...
+## $ region           &lt;chr&gt; &quot;Western Europe&quot;, &quot;Western Europe&quot;, &quot;Western ...
+## $ aggregate        &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL...</code></pre>
+<pre class="r"><code>dados &lt;- subset(maddison, 
+                year &gt;= as.Date(&quot;1800-01-01&quot;))
+
+dados_tibble &lt;- as_tibble(dados)
+
+dados_tibble</code></pre>
+<pre><code>## # A tibble: 38,402 x 9
+##    year       country_original gdp_pc country iso2c iso3c continent region
+##    &lt;date&gt;     &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; 
+##  1 1800-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  2 1801-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  3 1802-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  4 1803-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  5 1804-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  6 1805-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  7 1806-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  8 1807-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+##  9 1808-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+## 10 1809-01-01 Austria              NA Austria AT    AUT   Europe    Weste~
+## # ... with 38,392 more rows, and 1 more variable: aggregate &lt;lgl&gt;</code></pre>
+<pre class="r"><code>projeto &lt;- dados_tibble %&gt;% 
+  select(year, iso3c, gdp_pc,country, continent)
+  
+projeto_2 &lt;- projeto %&gt;% 
+  filter(is.na(gdp_pc)==F, is.na(iso3c) ==F, is.na(continent)==F,
+         is.na(year)==F, year &gt;= 1500) 
+
+head(projeto_2)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##   year       iso3c gdp_pc country continent
+##   &lt;date&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    
+## 1 1975-01-01 AUT   11646. Austria Europe   
+## 2 1976-01-01 AUT   12201. Austria Europe   
+## 3 1977-01-01 AUT   12767. Austria Europe   
+## 4 1978-01-01 AUT   12731. Austria Europe   
+## 5 1979-01-01 AUT   13448. Austria Europe   
+## 6 1980-01-01 AUT   13759. Austria Europe</code></pre>
+<p>Selecionando alguns países…</p>
+<pre class="r"><code>paises &lt;-  c(&quot;Russia&quot;, &quot;Venezuela&quot;, &quot;Iraq&quot;, &quot;Myanmar&quot;, &quot;Sudan&quot;,
+                   &quot;Afghanistan&quot;, &quot;Congo&quot;, &quot;Greece&quot;, &quot;Argentina&quot;, &quot;Brazil&quot;,
+                   &quot;India&quot;, &quot;Italy&quot;, &quot;China&quot;, &quot;South Africa&quot;, &quot;Spane&quot;,
+                   &quot;Botswana&quot;, &quot;Cape Verde&quot;, &quot;Bhutan&quot;, &quot;Rwanda&quot;, &quot;France&quot;,
+                   &quot;United States&quot;, &quot;Germany&quot;, &quot;Britain&quot;, &quot;Barbados&quot;, &quot;Norway&quot;, &quot;Japan&quot;,
+                   &quot;New Zealand&quot;, &quot;Singapore&quot;, &quot;Australia&quot;) 
+
+
+
+projeto_3 &lt;- projeto_2 %&gt;% 
+            filter(country %in% paises) %&gt;% 
+            mutate(log.gdp = log(gdp_pc))
+            
+            
+
+  projeto_4 &lt;- projeto_2 %&gt;% 
+    filter(country %in% paises) </code></pre>
+<p>Finalmente rodando nosso gráfico!</p>
+<pre class="r"><code>  p3 &lt;-     ggplot(projeto_4) +
+    aes(x = year, y = gdp_pc, colour = country) +
+    geom_line(size = 1L) +
+    facet_wrap(vars(continent), scales = &quot;fixed&quot;) +
+    theme(strip.background = element_blank(), 
+          strip.placement = &quot;outside&quot;) +
+    theme_economist() +
+    xlim(as_date(&quot;1970-01-01&quot;),as_date(&quot;2020-01-01&quot;)) +
+    ggtitle(&quot;Evolução da Renda per capita no Mundo. Países Selecionados&quot;, &quot;1970 - 2010&quot;)
+  
+  p4 &lt;- direct.label(p3,&quot;last.bumpup&quot;)
+  
+anim &lt;-   p4 + transition_reveal(year)</code></pre>
+<p>finalmente nosso grafico!!</p>
+<pre class="r"><code>anim </code></pre>
+<p><img src="/post/2019-07-15-maddison_files/figure-html/unnamed-chunk-6-1.gif" /><!-- --></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

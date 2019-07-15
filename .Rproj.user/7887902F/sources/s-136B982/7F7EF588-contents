@@ -1,0 +1,275 @@
+---
+title: "Monografia de Gradua??o"
+author: "Jo?o Rebou?as Castello Branco"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  beamer_presentation: 
+    colortheme: whale
+    theme: Boadilla
+    fig_caption: no
+    slide_level: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### MONOGRAFIA DE GRADUA??O
+
+#### A Orienta??o Pol?tica ? importante para Educa??o? Evid?ncias de elei??es municipais no Brasil  
+
+
+Aluno: Jo?o Rebou?as Castello Branco  
+
+Orientador: Prof. Romero Rocha
+
+#### OBJETIVOS
+
+* Encontrar evid?ncias do impacto da orienta??o pol?tica sobre Educa??o  
+    + tr?s ideologias: esquerda, direita e centro.
+  
+* Educa??o medida por:
+    + Gastos em educa??o em cada ano do mandato e na m?dia dos 4 anos
+    + Desempenho escolar medido pelas notas na Prova Brasil (PB)
+  
+### INTRODU??O
+
+* Educa??o brasileira avan?a devagar e n?o atinge as metas propostas 
+
+* Gasto brasileiro com educa??o relativamente alto
+  
+* Educa??o - benef?cios sociais e privados
+
+    * Benef?cios sociais
+    
+        + Crescimento Econ?mico e Capital Humano (Hanushek e Kimko, 2000 e Amaral e Menezes-filho, 2009)
+        + Quantidade e qualidade de Capital Humano impactam o Crescimento Econ?mico (Hanushek e Kimko, 2000)
+    
+    * Benef?cios Privados  
+    
+        + Qualidade da educa??o ligada positivamente aos futuros sal?rios (Curi e Menezes-Filho, 2014 e Barros et al, 2002)  
+        
+        + Economia da Sa?de: redu??o do IMC (Costa Leite, 2014) 
+
+### REVIS?O DE LITERATURA  
+
+* CF: o munic?pio como principal respons?vel pela educa??o p?blica b?sica
+
+* Aumento de recursos para educa??o (Amaral e Menezes-Filho, 2009)  
+
+* Por?m v?rios estudos n?o encontram evid?ncias do impacto de mais recursos em melhor aprendizado. Por exemplo:  
+
+    + Regatieri et al (2016): sem impacto de transfer?ncias de recursos via FPM nas taxas de aprova??o e nos resultados da PB  
+    
+    + Castro (2015): sem impacto de transfer?ncias de recursos via FPM sobre qualidade escolar (infraestrutura e qualifica??o do professor)
+    
+    + Amaral e Menezes-Filho (2009): Brasil segue o padr?o mundial indicado pela literatura 
+  
+***
+### REVIS?O DE LITERATURA  
+
+Alguns autores prop?em alternativas para ajudar na melhora da educa??o  
+
+  * Andrabi et al (2007) e Camargo et al (2017): melhor acesso a educa??o tem impacto sobre desempenho escolar  
+ 
+  * Fryer (2017) e Bloom et al. (2015): impacto positivo de pr?ticas gerenciais das escolas no desempenho escolar  
+
+  * Conclus?o: Melhor acesso ? informa??o e melhores pr?ticas gerenciais podem ser alternativas para ajudar na melhora da educa??o brasileira 
+  
+***
+### REVIS?O DE LITERATURA  
+
+  Apesar da sabedoria popular de que partidos de esquerda priorizam educa??o, enquanto partidos de direita priorizam o mercado, a literatura n?o encontra esses resultados
+
+  * Galindo-Silva (2013), Ferreira e Gyourko (2009) 
+    + n?o encontram efeitos de partido pol?tico sobre pol?tica fiscal   
+  
+  * Garritzmann e Seng (2015)
+    + n?o encontra impacto de orienta??o pol?tica em gastos totais e setoriais em educa??o
+
+***
+### REVIS?O DE LITERATURA  
+
+* Lidbom (2007) usa uma RDD a n?vel municipal e encontra impacto de partidos pol?ticos sobre pol?tica econ?mica  
+
+    + Esquerda gasta mais, emprega mais no setor p?blico, tem taxas de desemprego menores
+  
+***
+### REVIS?O DE LITERATURA  
+
+Outros campos da Economia Pol?tica incluem  
+
+* O impacto da elei??o de partidos de esquerda sobre o mercado financeiro (Girardi, 2018)  
+
+    + vit?rias da esquerda afetam, no curto prazo, negativamente  o pre?o das a??es e as taxas de c?mbio (desvaloriza??o)  
+    
+    + mais impacto em pa?ses em desenvolvimento do que desenvolvidos  
+    
+    + conclus?o do autor: pode refletir a expectativa dos agentes de pol?ticas governamentais mais tolerantes ? infla??o e menos tolerantes ao capital    
+    
+  
+***  
+### REVIS?O DE LITERATURA  
+
+* O impacto da elei??o de pol?ticas mulheres:  
+
+    + em mais mulheres se candidatando (Broockman, 2014)    
+  
+    + na implementa??o de pol?ticas p?blicas pr? igualdade de g?nero, como apoio familiar, pr?-escola e servi?os que balanceiem o trabalho e vida familiar da mulher (Carozzi e Gago, 2017)    
+  
+        + N?o encontram efeitos significativos 
+  
+***
+### BASE DE DADOS - TSE E FINBRA
+
+* Resultado das elei??es municipais de 2004, 2008 e 2012 pelo TSE  
+
+    + Somente cidades que s? possuem o primeiro turno (menos de 200mil habitantes)  
+    
+    + seleciona-se os dois candidatos mais votados e de orienta??es distintas  
+    
+
+* Dados sobre gastos empenhados dispon?veis pelo FINBRA  
+
+    + Gasto na Fun??o Educa??o (representam a finalidade da despesa)  
+  
+***  
+### BASE DE DADOS - INEP
+  
+* Desempenho escolar  
+
+    + Notas na PB para anos iniciais e finais
+        + L?ngua Portuguesa e Matem?tica  
+        + Nota Padronizada
+    
+    + IDEB 
+        + calculado atrav?s da nota na PB e nas taxas de aprova??o  
+        + pelas taxas de aprova??o serem pass?veis de manipula??o pela escola/munic?pio o indicador n?o ? o mais recomendado para as an?lises
+    
+  + Dispon?vel para os anos de 2005, 2007, 2009, 2011, 2013 e 2015  
+  
+***
+
+### BASE DE DADOS - ORIENTA??O POL?TICA
+
+  Alguns artigos fazem a caracteriza??o dos partidos no espectro ideol?gico, mas nenhum abrange todos os anos nem todos os partidos deste trabalho.
+Optou-se por fazer uma mescla de v?rios artigos de forma a contornar este problema  
+
+  * Girardi (2018) faz procedimento parecido  
+  
+  * Os partidos comuns nos trabalhos recebem frequentemente a mesma classifica??o  
+  
+***
+  
+### BASE DE DADOS - ORIENTA??O POL?TICA
+
+
+ ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela1.png) 
+
+
+*** 
+
+### ESTRAT?GIA EMP?RICA 
+
+#### A Abordagem de Regress?o Descont?nua
+
+  * O grupo de tratamento ? escolhido a partir de uma regra ex?gena de tal forma que uma descontinuidade ? criada (JACOB e ZOU, 2012)   
+  
+  * Diferen?a entre tratados e n?o tratados determinadas somente por esta regra s?o, em m?dia, irrelevantes  
+  
+***
+### ESTRAT?GIA EMP?RICA - RDD
+
+Por se tratar de um quasi-experimento, alguns cuidados devem ser tomados para evitar estimativas inconsistentes e enviesadas  
+
+* N?o pode haver controle sobre os resultados da elei??o
+
+* A margem de vit?ria e o ponto de corte s?o determinados exogenamente e o tratamento inteiramente baseado no resultado das elei??es  
+
+* A descontinuidade acontece apenas na Margem de Vit?ria. Deve-se testar para descontinuidades nas covariadas.
+
+***
+### ESTRAT?GIA EMP?RICA  
+
+* O Modelo Proposto
+
+$$Y_{i}=B_{0}+B_{1}D_{i}+B_{2}X_{i}+e_{i}$$  
+ 
+  Onde $Y_{i}$ ? o indicador de interesse (Nota na PB, IDEB ou gasto em educa??o). $B_{0}$ ? o intercepto, $B_{1}$ ? o coeficiente de interesse,   $D_{i}$ uma dummy indicando o munic?pio que elegeu o prefeito com a ideologia de interesse. $X_{i}$ ? a margem de vit?ria.
+  
+
+### ANALISE ECONOM?TRICA - RESULTADOS
+
+TABELA 2 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela2.png) 
+
+### ANALISE ECONOM?TRICA - RESULTADOS
+
+TABELA 3 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela3.png) 
+
+### ANALISE ECONOM?TRICA - RESULTADOS
+
+TABELA 4 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela4.png) 
+
+### ANALISE ECONOM?TRICA - RESULTADOS
+
+TABELA 5 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela5.png) 
+
+### ANALISE ECONOM?TRICA - TESTES DE ROBUSTEZ
+
+ ![](C:\Users\JRCD\Dropbox\monografia\graficos\manipulation_teste.png)   
+
+### ANALISE ECONOM?TRICA - TESTES DE ROBUSTEZ
+
+TABELA 6 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela6.png) 
+
+### ANALISE ECONOM?TRICA - TESTES DE ROBUSTEZ
+
+TABELA 7 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela7.png)
+
+### ANALISE ECONOM?TRICA - TESTES DE ROBUSTEZ
+
+TABELA 8 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela8.png)
+
+### ANALISE ECONOM?TRICA - TESTES DE ROBUSTEZ
+
+TABELA 9 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela9.png) 
+
+### ANALISE ECONOM?TRICA - TESTES DE ROBUSTEZ
+
+TABELA 10 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela10.png) 
+
+
+### CONCLUS?O
+
+##### Ideologia pol?tica tem efeito sobre educa??o no Brasil?
+
+* Educa??o ? importante para o desenvolvimento do pa?s
+
+* H? um forte debate sobre a educa??o brasileira
+
+* H? consenso popular diz que a esquerda se preocupa mais com educa??o do que direita e centro
+
+* Os resultados, contradizendo o consenso popular, apontam que n?o h? efeito significativo em qualquer uma das tr?s orienta??es pol?ticas
+
+### ANEXO
+
+TABELA 11 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela11.png) 
+
+### ANEXO
+
+TABELA 12 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela12.png) 
+
+### ANEXO
+
+TABELA 13 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela13.png) 
+
+### ANEXO
+
+TABELA 14 ![](C:\Users\JRCD\Dropbox\monografia\tabelas\tabela14.png) 
+
+
+
+
+
+
+
