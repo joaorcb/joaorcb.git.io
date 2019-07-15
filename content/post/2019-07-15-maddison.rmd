@@ -3,7 +3,7 @@ title: "GDP per Cap visualization with Maddison and gganimate"
 author: "João Rebouças"
 date: "2019-15-07"
 categories: ["R"]
-tags: ["R Markdown", "gganimate", "gdp_percap"]
+tags: ["R", "gganimate", "gdp_percap"]
 ---
 
 ```{r setup, include=FALSE}
