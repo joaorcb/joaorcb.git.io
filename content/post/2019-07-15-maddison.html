@@ -1,9 +1,9 @@
 ---
 title: "GDP per Cap visualization with Maddison and gganimate"
 author: "João Rebouças"
-date: "15 julho, 2019"
+date: "2019-15-07"
 categories: ["R"]
-tags: ["R Markdown", "plot", "regression"]
+tags: ["R", "gganimate", "gdp_percap"]
 ---
 
 
@@ -70,7 +70,7 @@ head(projeto_2)</code></pre>
 ## 4 1978-01-01 AUT   12731. Austria Europe   
 ## 5 1979-01-01 AUT   13448. Austria Europe   
 ## 6 1980-01-01 AUT   13759. Austria Europe</code></pre>
-<p>Selecionando alguns países…</p>
+<p>Selecting some countries…</p>
 <pre class="r"><code>paises &lt;-  c(&quot;Russia&quot;, &quot;Venezuela&quot;, &quot;Iraq&quot;, &quot;Myanmar&quot;, &quot;Sudan&quot;,
                    &quot;Afghanistan&quot;, &quot;Congo&quot;, &quot;Greece&quot;, &quot;Argentina&quot;, &quot;Brazil&quot;,
                    &quot;India&quot;, &quot;Italy&quot;, &quot;China&quot;, &quot;South Africa&quot;, &quot;Spane&quot;,
@@ -88,7 +88,7 @@ projeto_3 &lt;- projeto_2 %&gt;%
 
   projeto_4 &lt;- projeto_2 %&gt;% 
     filter(country %in% paises) </code></pre>
-<p>Finalmente rodando nosso gráfico!</p>
+<p>Finaly making our graph!!!</p>
 <pre class="r"><code>  p3 &lt;-     ggplot(projeto_4) +
     aes(x = year, y = gdp_pc, colour = country) +
     geom_line(size = 1L) +
@@ -97,11 +97,14 @@ projeto_3 &lt;- projeto_2 %&gt;%
           strip.placement = &quot;outside&quot;) +
     theme_economist() +
     xlim(as_date(&quot;1970-01-01&quot;),as_date(&quot;2020-01-01&quot;)) +
-    ggtitle(&quot;Evolução da Renda per capita no Mundo. Países Selecionados&quot;, &quot;1970 - 2010&quot;)
+    ggtitle(&quot;Evolução da Renda per capita no Mundo&quot; ,&quot;Países Selecionados 1970 - 2010&quot;)
   
   p4 &lt;- direct.label(p3,&quot;last.bumpup&quot;)
   
 anim &lt;-   p4 + transition_reveal(year)</code></pre>
-<p>finalmente nosso grafico!!</p>
-<pre class="r"><code>anim </code></pre>
+<p>here he is…*</p>
+<pre class="r"><code>animate(anim, width = 450, height = 500)</code></pre>
 <p><img src="/post/2019-07-15-maddison_files/figure-html/unnamed-chunk-6-1.gif" /><!-- --></p>
+<ul>
+<li>Other way of resizing our graph is to plot our graph and set the size as chunk options, but this way is easier.</li>
+</ul>

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1563215489787.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2778520163",
+    "id" : "8D11F90F",
+    "lastKnownWriteTime" : 1563215528,
+    "last_content_update" : 1563215528059,
+    "path" : "~/joaorcb.git.io/content/post/2019-07-15-gdp-per-cap-visualization-with-gganimate-and-maddison-project.Rmd",
+    "project_path" : "content/post/2019-07-15-gdp-per-cap-visualization-with-gganimate-and-maddison-project.Rmd",
+    "properties" : {
+        "cursorPosition" : "8,14",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

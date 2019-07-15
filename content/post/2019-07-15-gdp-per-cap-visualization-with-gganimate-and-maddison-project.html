@@ -1,80 +1,16 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.55.6" />
+---
+title: GDP per Cap visualization with gganimate and Maddison project
+author: Joao RCB
+date: '2019-07-15'
+slug: gdp-per-cap-visualization-with-gganimate-and-maddison-project
+categories:
+  - R
+tags:
+  - gdp_percap
+  - gganimate
+  - R
+---
 
-
-<title>GDP per Cap visualization with Maddison and gganimate - JOAORCB website</title>
-<meta property="og:title" content="GDP per Cap visualization with Maddison and gganimate - JOAORCB website">
-
-
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
-
-
-
-  
-
-
-
-
-
-
-
-
-<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
-
-
-
-<link rel="stylesheet" href="/css/fonts.css" media="all">
-<link rel="stylesheet" href="/css/main.css" media="all">
-
-
-
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <nav class="nav">
-  <a href="/" class="nav-logo">
-    <img src="/images/%3cnil%3e"
-         width=""
-         height=""
-         alt="">
-  </a>
-
-  <ul class="nav-links">
-    
-    <li><a href="/about/">About</a></li>
-    
-    <li><a href="https://github.com/joaorcb">GitHub</a></li>
-    
-    <li><a href="https://joaorcb.netlify.com/">Home</a></li>
-    
-    <li><a href="https://www.linkedin.com/in/jo%C3%A3o-rebou%C3%A7as-castello-branco-37371bb1/">Linkedin</a></li>
-    
-  </ul>
-</nav>
-
-      </header>
-
-
-<main class="content" role="main">
-
-  <article class="article">
-    
-    <span class="article-duration">3 min read</span>
-    
-
-    <h1 class="article-title">GDP per Cap visualization with Maddison and gganimate</h1>
-
-    
-    <span class="article-date">0001-01-01</span>
-    
-
-    <div class="article-content">
-      
 
 
 <p>This is a quick blog showing how to create animated graphs with R and gganimate.</p>
@@ -173,51 +109,7 @@ projeto_3 &lt;- projeto_2 %&gt;%
 anim &lt;-   p4 + transition_reveal(year)</code></pre>
 <p>here he is…*</p>
 <pre class="r"><code>animate(anim, width = 450, height = 500)</code></pre>
-<p><img src="/post/2019-07-15-maddison_files/figure-html/unnamed-chunk-6-1.gif" /><!-- --></p>
+<p><img src="/post/2019-07-15-gdp-per-cap-visualization-with-gganimate-and-maddison-project_files/figure-html/unnamed-chunk-6-1.gif" /><!-- --></p>
 <ul>
 <li>Other way of resizing our graph is to plot our graph and set the size as chunk options, but this way is easier.</li>
 </ul>
-
-    </div>
-  </article>
-
-  
-
-
-</main>
-
-      <footer class="footer">
-        <ul class="footer-links">
-          <li>
-            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
-          </li>
-          <li>
-            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
-          </li>
-        </ul>
-      </footer>
-
-    </div>
-    
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
-<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
-
-
-
-    
-<script src="/js/math-code.js"></script>
-<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-    
-  </body>
-</html>
-
