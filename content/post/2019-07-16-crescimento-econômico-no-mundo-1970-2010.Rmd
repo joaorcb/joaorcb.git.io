@@ -1,0 +1,146 @@
+---
+title: "Crescimento Econômico no mundo 1970 - 2010"
+author: "João Rebouças Castello Branco"
+date: '2019-07-16'
+output:
+  html_document:
+    df_print: paged
+slug: crescimento-econômico-no-mundo-1970-2010
+tags:
+- maddison
+- economic_growth
+categories: R
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Fala queridos, 
+
+nesse segundo post vomos continuar brincando com os dados do Maddison Project, but this time in portuguese because I am lazy. Vamos então ao que interessa...
+
+Vou tentar recriar mais ou menos um gráfico que no eixo x mede o PIB_PC de 1970 e o eixo y mede o PIB_PC de 2010 dos países em que os dados estão disponíveis. Estou basicamente tentando replicar o gráfico deste [post](https://ourworldindata.org/economic-growth-since-1950) .  
+
+Basicamente o gráfico serve para observar os países que tiveram crescimento econômico no período de forma que quanto mais para alto e para esquerda maior foi o crescimento.
+
+Vamos ao que interessa...
+
+```{r message=FALSE, warning=FALSE}
+
+
+library(maddison)
+library(tidyverse)
+library(directlabels)
+library(lubridate)
+library(ggrepel)
+
+library(ggthemes)
+theme_set(theme_economist()) ## tema da revista the economist
+
+
+dados <- subset(maddison, 
+                year >= as.Date("1800-01-01"))
+
+dados_tibble <- as_tibble(dados)
+
+dados_tibble
+
+projeto <- dados_tibble %>% 
+  select(year, iso3c, gdp_pc,country, continent)
+
+tds_paises <- projeto %>% 
+    mutate(ano = lubridate:: year(year)) %>% 
+  filter(is.na(gdp_pc)==F, is.na(iso3c) ==F, is.na(continent)==F,
+         is.na(year)==F, year >= 1500) 
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
+
+## outros tipos de tabela estão disponíveis com a funcao kable do pacote knitr
+## ou xtable e etc
+
+knitr:: kable(head(tds_paises))
+
+```
+
+Bom, então primeiro temos que filtrar os anos para 1975 e 2010... Eu vi ao longo desse trabalho que tem uma Russia extra no meio dos dados, como não sei porque eu resolvi excluir.
+
+Depois de selecionar nossos anos e fazer o log do pib_pc (a visualização ficou melhor) eu resolvi tornar os dados "wide" (na linguagem do STATA é assim que se chama) com a função spread do tidyverse, mas existem outras incluindo a reshape (similar ao STATA). Assim, criaremos duas colunas, uma com o pib de 1975 e outra com pib de 2010. 
+
+Logo depois ploto nossos dados.
+
+```{r message=FALSE, warning=FALSE}
+
+tds_paises7510 <- tds_paises %>% 
+    select(country,continent,  ano, gdp_pc) %>% 
+  mutate(gdp_pc=log(gdp_pc)) %>% 
+    filter(ano == 1975 |  ano == 2010, country != "Russian Federation") %>% 
+    spread(ano, gdp_pc) 
+
+# Renomeando as colunas
+names(tds_paises7510) <- c("country","continent", "gdp_pc1975", "gdp_pc2010")
+
+
+tds_paises7510 %>% 
+    ggplot(aes(x=gdp_pc1975, y=gdp_pc2010, color = continent)) +
+    geom_point(shape = 1, size = 2.5, stroke = 1.25) + 
+    ggtitle("logGDP per cap 2010 and 1975")
+
+
+```
+
+Acho que da perceber que alguns países continuam ricos enquanto outros continuam pobres... mas não está muito claro. Vou adicionar uma linha y=x, assim países acima da linha tiveram crescimento econômico, enquanto países abaixo tiveram decrescimento.
+
+
+```{r message=FALSE, warning=FALSE}
+
+tds_paises7510 %>% 
+    ggplot(aes(x=gdp_pc1975, y=gdp_pc2010, color = continent)) +
+    geom_point(shape = 1, size = 2.5, stroke = 1.25) + 
+    geom_abline(intercept = 00, size = 1) +
+    ggtitle("logGDP per cap 2010 and 1975")
+
+
+```
+
+
+Um pouco melhor! pode-se perceber que a maioria dos países cresceu nesses 35 anos.
+
+Agora vamos por algumas labels nos países e fazer uns ajustes.
+
+```{r message=FALSE, warning=FALSE}
+## Selecionando alguns países para fazer um label depois no gráfico...
+paises <-  c("Russia", "Venezuela", "Iraq", "Myanmar",
+             "Greece", "Argentina", "Brazil","Korea, Republic of",
+             "India", "Italy", "China", "South Africa", "Spane",
+             "Cape Verde", "Bhutan", "France",
+             "United States", "Germany", "United Kingdon", "Barbados", "Norway", "Japan",
+             "New Zealand", "Singapore", "Australia", "Hong Kong") 
+
+ p <-  tds_paises7510 %>% 
+    ggplot(aes(x=gdp_pc1975, y=gdp_pc2010, color = continent)) +
+    geom_point(shape = 1, size = 2.5, stroke = 1.25) + 
+    geom_abline(intercept = 00, size = 1) +
+    geom_text_repel(aes(label = country),
+              color = "gray0",
+              data = filter(tds_paises7510, country %in% paises), 
+              force = 10) +
+    ggtitle("logGDP per cap 2010 and 1975") +
+    scale_x_continuous(name = "LOG GDP PER CAPITA 1975",
+                       limits = c(6.2, 10.5),
+                       breaks = 6:10) +
+    scale_y_continuous(name = "LOG GDP PER CAPITA 2010",
+                       limits = c(6.2, 11.2),
+                       breaks = 6:12) +
+    annotate("text", x = 9.5, y = 7.8,
+             label = "Countries bellow this line had  \n negative growth  rate", colour = "red", size = 5) +
+    annotate("text", x = 9, y = 11.2,
+             label = "Countries above this line had positive growth rate", colour = "blue", size = 5) +
+    labs(color = " ") 
+
+    p     
+``` 
