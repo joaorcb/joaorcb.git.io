@@ -10,9 +10,11 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     post = "/:year/:month/:day/:slug/"
 
 [[menu.main]]
+    name = "CV"
+    url = "/cv/"
+[[menu.main]]
     name = "Home"
     url = "https://joaorcb.netlify.com/"
-
 [[menu.main]]
     name = "About"
     url = "/about/"
@@ -24,6 +26,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "https://www.linkedin.com/in/jo%C3%A3o-rebou%C3%A7as-castello-branco-37371bb1/"
 
 [params]
+    Home = "https://joaorcb.netlify.com/"
     description = "A website for economics by JOÃO RCB."
 
     # options for highlight.js (version, additional languages, and theme)

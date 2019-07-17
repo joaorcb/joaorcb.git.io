@@ -14,6 +14,7 @@ categories: R
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=5.5, fig.height=3, fig.align = "center") 
 ```
 
 
@@ -58,12 +59,18 @@ tds_paises <- projeto %>%
 ```
 
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, results='asis'}
 
 ## outros tipos de tabela estão disponíveis com a funcao kable do pacote knitr
 ## ou xtable e etc
 
-knitr:: kable(head(tds_paises))
+library(knitr)
+library(kableExtra) ## da uma olhada nesse pacote para tabelas mais bonitinhas
+                    ## ver: http://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+        
+
+kable(head(tds_paises)) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
 
 ```
 
@@ -73,7 +80,7 @@ Depois de selecionar nossos anos e fazer o log do pib_pc (a visualização ficou
 
 Logo depois ploto nossos dados.
 
-```{r message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE}
 
 tds_paises7510 <- tds_paises %>% 
     select(country,continent,  ano, gdp_pc) %>% 
@@ -96,7 +103,7 @@ tds_paises7510 %>%
 Acho que da perceber que alguns países continuam ricos enquanto outros continuam pobres... mas não está muito claro. Vou adicionar uma linha y=x, assim países acima da linha tiveram crescimento econômico, enquanto países abaixo tiveram decrescimento.
 
 
-```{r message=FALSE, warning=FALSE}
+```{r  message=FALSE, warning=FALSE}
 
 tds_paises7510 %>% 
     ggplot(aes(x=gdp_pc1975, y=gdp_pc2010, color = continent)) +
