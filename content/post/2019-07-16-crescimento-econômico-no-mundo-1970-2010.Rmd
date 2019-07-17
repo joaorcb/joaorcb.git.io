@@ -1,10 +1,7 @@
 ---
-title: "Crescimento Econômico no mundo 1970 - 2010"
-author: "João Rebouças Castello Branco"
+title: Crescimento Econômico no mundo 1970 - 2010
+author: João Rebouças Castello Branco
 date: '2019-07-16'
-output:
-  html_document:
-    df_print: paged
 slug: crescimento-econômico-no-mundo-1970-2010
 tags:
 - maddison
