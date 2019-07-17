@@ -75,6 +75,7 @@
 
     <div class="article-content">
       
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
 <p>Fala queridos,</p>
@@ -122,66 +123,156 @@ tds_paises &lt;- projeto %&gt;%
 <pre class="r"><code>## outros tipos de tabela estão disponíveis com a funcao kable do pacote knitr
 ## ou xtable e etc
 
-knitr:: kable(head(tds_paises))</code></pre>
-<table>
+library(knitr)
+library(kableExtra) ## da uma olhada nesse pacote para tabelas mais bonitinhas
+                    ## ver: http://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+        
+
+kable(head(tds_paises)) %&gt;%
+  kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">year</th>
-<th align="left">iso3c</th>
-<th align="right">gdp_pc</th>
-<th align="left">country</th>
-<th align="left">continent</th>
-<th align="right">ano</th>
+<tr>
+<th style="text-align:left;">
+year
+</th>
+<th style="text-align:left;">
+iso3c
+</th>
+<th style="text-align:right;">
+gdp_pc
+</th>
+<th style="text-align:left;">
+country
+</th>
+<th style="text-align:left;">
+continent
+</th>
+<th style="text-align:right;">
+ano
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1975-01-01</td>
-<td align="left">AUT</td>
-<td align="right">11646.41</td>
-<td align="left">Austria</td>
-<td align="left">Europe</td>
-<td align="right">1975</td>
+<tr>
+<td style="text-align:left;">
+1975-01-01
+</td>
+<td style="text-align:left;">
+AUT
+</td>
+<td style="text-align:right;">
+11646.41
+</td>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+1975
+</td>
 </tr>
-<tr class="even">
-<td align="left">1976-01-01</td>
-<td align="left">AUT</td>
-<td align="right">12201.00</td>
-<td align="left">Austria</td>
-<td align="left">Europe</td>
-<td align="right">1976</td>
+<tr>
+<td style="text-align:left;">
+1976-01-01
+</td>
+<td style="text-align:left;">
+AUT
+</td>
+<td style="text-align:right;">
+12201.00
+</td>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+1976
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1977-01-01</td>
-<td align="left">AUT</td>
-<td align="right">12766.72</td>
-<td align="left">Austria</td>
-<td align="left">Europe</td>
-<td align="right">1977</td>
+<tr>
+<td style="text-align:left;">
+1977-01-01
+</td>
+<td style="text-align:left;">
+AUT
+</td>
+<td style="text-align:right;">
+12766.72
+</td>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+1977
+</td>
 </tr>
-<tr class="even">
-<td align="left">1978-01-01</td>
-<td align="left">AUT</td>
-<td align="right">12730.64</td>
-<td align="left">Austria</td>
-<td align="left">Europe</td>
-<td align="right">1978</td>
+<tr>
+<td style="text-align:left;">
+1978-01-01
+</td>
+<td style="text-align:left;">
+AUT
+</td>
+<td style="text-align:right;">
+12730.64
+</td>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+1978
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1979-01-01</td>
-<td align="left">AUT</td>
-<td align="right">13448.04</td>
-<td align="left">Austria</td>
-<td align="left">Europe</td>
-<td align="right">1979</td>
+<tr>
+<td style="text-align:left;">
+1979-01-01
+</td>
+<td style="text-align:left;">
+AUT
+</td>
+<td style="text-align:right;">
+13448.04
+</td>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+1979
+</td>
 </tr>
-<tr class="even">
-<td align="left">1980-01-01</td>
-<td align="left">AUT</td>
-<td align="right">13759.18</td>
-<td align="left">Austria</td>
-<td align="left">Europe</td>
-<td align="right">1980</td>
+<tr>
+<td style="text-align:left;">
+1980-01-01
+</td>
+<td style="text-align:left;">
+AUT
+</td>
+<td style="text-align:right;">
+13759.18
+</td>
+<td style="text-align:left;">
+Austria
+</td>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+1980
+</td>
 </tr>
 </tbody>
 </table>
@@ -202,14 +293,14 @@ tds_paises7510 %&gt;%
     ggplot(aes(x=gdp_pc1975, y=gdp_pc2010, color = continent)) +
     geom_point(shape = 1, size = 2.5, stroke = 1.25) + 
     ggtitle(&quot;logGDP per cap 2010 and 1975&quot;)</code></pre>
-<p><img src="/post/2019-07-16-crescimento-econômico-no-mundo-1970-2010_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/post/2019-07-16-crescimento-econômico-no-mundo-1970-2010_files/figure-html/unnamed-chunk-3-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Acho que da perceber que alguns países continuam ricos enquanto outros continuam pobres… mas não está muito claro. Vou adicionar uma linha y=x, assim países acima da linha tiveram crescimento econômico, enquanto países abaixo tiveram decrescimento.</p>
 <pre class="r"><code>tds_paises7510 %&gt;% 
     ggplot(aes(x=gdp_pc1975, y=gdp_pc2010, color = continent)) +
     geom_point(shape = 1, size = 2.5, stroke = 1.25) + 
     geom_abline(intercept = 00, size = 1) +
     ggtitle(&quot;logGDP per cap 2010 and 1975&quot;)</code></pre>
-<p><img src="/post/2019-07-16-crescimento-econômico-no-mundo-1970-2010_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2019-07-16-crescimento-econômico-no-mundo-1970-2010_files/figure-html/unnamed-chunk-4-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Um pouco melhor! pode-se perceber que a maioria dos países cresceu nesses 35 anos.</p>
 <p>Agora vamos por algumas labels nos países e fazer uns ajustes.</p>
 <pre class="r"><code>## Selecionando alguns países para fazer um label depois no gráfico...
@@ -242,7 +333,7 @@ paises &lt;-  c(&quot;Russia&quot;, &quot;Venezuela&quot;, &quot;Iraq&quot;, &qu
     labs(color = &quot; &quot;) 
 
     p     </code></pre>
-<p><img src="/post/2019-07-16-crescimento-econômico-no-mundo-1970-2010_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/post/2019-07-16-crescimento-econômico-no-mundo-1970-2010_files/figure-html/unnamed-chunk-5-1.png" width="528" style="display: block; margin: auto;" /></p>
 
     </div>
   </article>

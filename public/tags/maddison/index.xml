@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maddison on JOAORCB website</title>
+    <link>/tags/maddison/</link>
+    <description>Recent content in maddison on JOAORCB website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/maddison/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Crescimento Econômico no mundo 1970 - 2010</title>
+      <link>/2019/07/16/crescimento-econ%C3%B4mico-no-mundo-1970-2010/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/07/16/crescimento-econ%C3%B4mico-no-mundo-1970-2010/</guid>
+      <description>Fala queridos,
+nesse segundo post vomos continuar brincando com os dados do Maddison Project, but this time in portuguese because I am lazy. Vamos então ao que interessa…
+Vou tentar recriar mais ou menos um gráfico que no eixo x mede o PIB_PC de 1970 e o eixo y mede o PIB_PC de 2010 dos países em que os dados estão disponíveis. Estou basicamente tentando replicar o gráfico deste post .</description>
+    </item>
+    
+  </channel>
+</rss>
