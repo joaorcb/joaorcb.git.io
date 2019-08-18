@@ -19,7 +19,7 @@
       <guid>/2019/08/18/memes-com-r/</guid>
       <description>Todo mundo Gosta de memes, muitos gostam de R, logo memes no R!
 primeiro um detalhezinho:
-Segundo este [link] (https://cran.r-project.org/web/packages/meme/vignettes/meme.html) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:
+Segundo este link temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:
 if (.Platform$OS.type == &amp;quot;windows&amp;quot;) {windowsFonts(Impact = windowsFont(&amp;quot;Impact&amp;quot;),Courier = windowsFont(&amp;quot;Courier&amp;quot;))}Agora vamos em frente. Usando o próprio exemplo disponivel através do comando ?meme (depois de usar library(meme))
 library(meme)f &amp;lt;- system.</description>
     </item>

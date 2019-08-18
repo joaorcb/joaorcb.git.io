@@ -12,7 +12,7 @@ Todo mundo Gosta de memes, muitos gostam de R, logo memes no R!
 
 primeiro um detalhezinho:
 
-Segundo este [link] (https://cran.r-project.org/web/packages/meme/vignettes/meme.html) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:
+Segundo este [link](https://cran.r-project.org/web/packages/meme/vignettes/meme.html) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:
 
 ```{r}
 
