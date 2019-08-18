@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.55.6" />
+
+
+<title>Memes com R - JOAORCB website</title>
+<meta property="og:title" content="Memes com R - JOAORCB website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/joaorcb">GitHub</a></li>
+    
+    <li><a href="https://joaorcb.netlify.com/">Home</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/jo%C3%A3o-rebou%C3%A7as-castello-branco-37371bb1/">Linkedin</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Memes com R</h1>
+
+    
+    <span class="article-date">2019-08-18</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>Todo mundo Gosta de memes, muitos gostam de R, logo memes no R!</p>
+<p>primeiro um detalhezinho:</p>
+<p>Segundo este [link] (<a href="https://cran.r-project.org/web/packages/meme/vignettes/meme.html" class="uri">https://cran.r-project.org/web/packages/meme/vignettes/meme.html</a>) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:</p>
+<pre class="r"><code>if (.Platform$OS.type == &quot;windows&quot;) {
+    windowsFonts(
+        Impact = windowsFont(&quot;Impact&quot;),
+        Courier = windowsFont(&quot;Courier&quot;)
+    )
+}</code></pre>
+<p>Agora vamos em frente. Usando o próprio exemplo disponivel através do comando ?meme (depois de usar library(meme))</p>
+<pre class="r"><code>library(meme)
+f &lt;- system.file(&quot;angry8.jpg&quot;, package=&quot;meme&quot;)
+meme(f, &quot;code&quot;, &quot;all the things!&quot;, font = &quot;Helvetica&quot;)</code></pre>
+<p><img src="/post/2019-08-18-memes-com-r_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Explicando: o que fizemos foi pega ruma imagem que é baixada qnd instalamos q carregamos o pacote. O primeiro comando é a localização dessa imagem , o segundo é o texto da parte de cima do meme e o terceiro é o texto da parte de baixo. Podemos especificar a fonte tbm, nesse caso a helvetica.</p>
+<p>Vou fazer um memezinho usando a logo do Rstudio que eu achei procurando no google</p>
+<pre class="r"><code>u &lt;- &quot;https://i0.wp.com/static1.squarespace.com/static/51156277e4b0b8b2ffe11c00/t/583ccafcbebafbc5c11fa6ec/1480379239088/RStudio-Ball.png?w=456&amp;ssl=1&quot;
+
+meme(u, &quot;In R&quot;, &quot;we Trust!&quot;, font = &quot;Helvetica&quot;, color = &quot;yellow&quot;, size = 3, vjust = 0.25)</code></pre>
+<p><img src="/post/2019-08-18-memes-com-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>In R we trust!!
+checando a documentacao da função você pode ver algumas opções para customizar o seu meme. Mais que isso, tenha criatividade!! eu não tenho ehehehe.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

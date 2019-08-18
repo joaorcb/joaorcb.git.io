@@ -1,0 +1,51 @@
+---
+title: Memes com R
+author: João Rebouças Castello Branco
+date: '2019-08-18'
+slug: memes-com-r
+categories: []
+tags:
+  - memes
+---
+
+Todo mundo Gosta de memes, muitos gostam de R, logo memes no R!
+
+primeiro um detalhezinho:
+
+Segundo este [link] (https://cran.r-project.org/web/packages/meme/vignettes/meme.html) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:
+
+```{r}
+
+if (.Platform$OS.type == "windows") {
+    windowsFonts(
+        Impact = windowsFont("Impact"),
+        Courier = windowsFont("Courier")
+    )
+}
+```
+
+
+Agora vamos em frente. Usando o próprio exemplo disponivel através do comando ?meme (depois de usar library(meme))
+
+```{r message=F, warning=F}
+library(meme)
+f <- system.file("angry8.jpg", package="meme")
+meme(f, "code", "all the things!", font = "Helvetica")
+
+```
+
+
+Explicando: o que fizemos foi pega ruma imagem que é baixada qnd instalamos q carregamos o pacote. O primeiro comando é a localização dessa imagem , o segundo é o texto da parte de cima do meme e o terceiro é o texto da parte de baixo. Podemos especificar a fonte tbm, nesse caso a helvetica.
+
+Vou fazer um memezinho usando a logo do Rstudio que eu achei procurando no google 
+
+```{r message=FALSE, warning=FALSE}
+u <- "https://i0.wp.com/static1.squarespace.com/static/51156277e4b0b8b2ffe11c00/t/583ccafcbebafbc5c11fa6ec/1480379239088/RStudio-Ball.png?w=456&ssl=1"
+
+meme(u, "In R", "we Trust!", font = "Helvetica", color = "yellow", size = 3, vjust = 0.25)
+
+```
+
+
+In R we trust!! 
+checando a documentacao da função você pode ver algumas opções para customizar o seu meme. Mais que isso, tenha criatividade!! eu não tenho ehehehe.

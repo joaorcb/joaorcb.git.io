@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>memes on JOAORCB website</title>
+    <link>/tags/memes/</link>
+    <description>Recent content in memes on JOAORCB website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/memes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Memes com R</title>
+      <link>/2019/08/18/memes-com-r/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/08/18/memes-com-r/</guid>
+      <description>Todo mundo Gosta de memes, muitos gostam de R, logo memes no R!
+primeiro um detalhezinho:
+Segundo este [link] (https://cran.r-project.org/web/packages/meme/vignettes/meme.html) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:
+if (.Platform$OS.type == &amp;quot;windows&amp;quot;) {windowsFonts(Impact = windowsFont(&amp;quot;Impact&amp;quot;),Courier = windowsFont(&amp;quot;Courier&amp;quot;))}Agora vamos em frente. Usando o próprio exemplo disponivel através do comando ?meme (depois de usar library(meme))
+library(meme)f &amp;lt;- system.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+---
+title: Memes com R
+author: João Rebouças Castello Branco
+date: '2019-08-18'
+slug: memes-com-r
+categories: []
+tags:
+  - memes
+---
+
+
+
+<p>Todo mundo Gosta de memes, muitos gostam de R, logo memes no R!</p>
+<p>primeiro um detalhezinho:</p>
+<p>Segundo este [link] (<a href="https://cran.r-project.org/web/packages/meme/vignettes/meme.html" class="uri">https://cran.r-project.org/web/packages/meme/vignettes/meme.html</a>) temos que rodar um registrar a fonte da letra (se usuário do windows) como a seguir:</p>
+<pre class="r"><code>if (.Platform$OS.type == &quot;windows&quot;) {
+    windowsFonts(
+        Impact = windowsFont(&quot;Impact&quot;),
+        Courier = windowsFont(&quot;Courier&quot;)
+    )
+}</code></pre>
+<p>Agora vamos em frente. Usando o próprio exemplo disponivel através do comando ?meme (depois de usar library(meme))</p>
+<pre class="r"><code>library(meme)
+f &lt;- system.file(&quot;angry8.jpg&quot;, package=&quot;meme&quot;)
+meme(f, &quot;code&quot;, &quot;all the things!&quot;, font = &quot;Helvetica&quot;)</code></pre>
+<p><img src="/post/2019-08-18-memes-com-r_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Explicando: o que fizemos foi pega ruma imagem que é baixada qnd instalamos q carregamos o pacote. O primeiro comando é a localização dessa imagem , o segundo é o texto da parte de cima do meme e o terceiro é o texto da parte de baixo. Podemos especificar a fonte tbm, nesse caso a helvetica.</p>
+<p>Vou fazer um memezinho usando a logo do Rstudio que eu achei procurando no google</p>
+<pre class="r"><code>u &lt;- &quot;https://i0.wp.com/static1.squarespace.com/static/51156277e4b0b8b2ffe11c00/t/583ccafcbebafbc5c11fa6ec/1480379239088/RStudio-Ball.png?w=456&amp;ssl=1&quot;
+
+meme(u, &quot;In R&quot;, &quot;we Trust!&quot;, font = &quot;Helvetica&quot;, color = &quot;yellow&quot;, size = 3, vjust = 0.25)</code></pre>
+<p><img src="/post/2019-08-18-memes-com-r_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>In R we trust!!
+checando a documentacao da função você pode ver algumas opções para customizar o seu meme. Mais que isso, tenha criatividade!! eu não tenho ehehehe.</p>
