@@ -1,6 +1,7 @@
 ---
-date: `r format(Sys.time(), '%d %B, %Y')`
 title: About
+author: João Castello Branco
+date: '2021-04-21'
 ---
 
 This is my personal website. 
