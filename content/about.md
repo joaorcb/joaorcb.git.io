@@ -1,9 +1,10 @@
 ---
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: `r format(Sys.time(), '%d %B, %Y')`
 title: About
 ---
 
-This is my personal website 
+This is my personal website. 
+[My Linkedin](https://www.linkedin.com/in/jo%C3%A3o-rebou%C3%A7as-castello-branco-37371bb1/) and [My CV](https://drive.google.com/file/d/1KU7GkKv5hST47Yn7LdLQGowgAimrbq4G/view?usp=sharing)
 
 My name is João Castello Branco. I have a Bachelors degree in Economics from the Institute of Economics at the Federal University of Rio de Janeiro (IE/UFRJ) and Currently pursuing master's degrees in Analysis and Policy in Economics (APE) at the Paris School of Economics (PSE). I expect to graduate during the (european) summer of 2021.
 
