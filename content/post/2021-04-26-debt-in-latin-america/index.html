@@ -61,23 +61,23 @@ country_set&lt;- country_set %&gt;%
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |==================================                                    |  48%
+  |==========                                                            |  15%
+  |                                                                            
+  |=====================================================                 |  75%
   |                                                                            
   |======================================================================| 100%
 ## 
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |=================================                                     |  47%
-  |                                                                            
-  |=======================================================               |  79%
+  |===============================================                       |  67%
   |                                                                            
   |======================================================================| 100%
 ## 
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |===========================================                           |  62%
+  |=====================================================                 |  76%
   |                                                                            
   |======================================================================| 100%
 ## 
@@ -131,14 +131,14 @@ ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
 print(p1)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Plot 2!</p>
-<pre class="r"><code>p2 &lt;- divida%&gt;% 
-  ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
-  geom_line(size=2) + 
-  scale_colour_brewer(palette = &quot;Set1&quot;) +
-  ylab(&quot;&quot;) + xlab(&quot;&quot;) +
-  ggtitle(&quot;Debt to GDP ration in LatAm&quot;) +
-  theme_ipsum(grid = F) +
-  theme(legend.title = element_blank(),
+<pre class="r"><code>p2 &lt;- divida%&gt;%  
+  ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +  
+  geom_line(size=2) +  
+  scale_colour_brewer(palette = &quot;Set1&quot;) +  
+  ylab(&quot;&quot;) + xlab(&quot;&quot;) +  
+  ggtitle(&quot;Debt to GDP ration in LatAm&quot;) +  
+  theme_ipsum(grid = F) +  
+  theme(legend.title = element_blank(),  
         legend.position = &quot;bottom&quot;)
 
 

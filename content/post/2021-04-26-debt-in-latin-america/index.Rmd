@@ -127,14 +127,14 @@ Plot 2!
 
 ```{r echo=TRUE}
 
-p2 <- divida%>% 
-  ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
-  geom_line(size=2) + 
-  scale_colour_brewer(palette = "Set1") +
-  ylab("") + xlab("") +
-  ggtitle("Debt to GDP ration in LatAm") +
-  theme_ipsum(grid = F) +
-  theme(legend.title = element_blank(),
+p2 <- divida%>%  
+  ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +  
+  geom_line(size=2) +  
+  scale_colour_brewer(palette = "Set1") +  
+  ylab("") + xlab("") +  
+  ggtitle("Debt to GDP ration in LatAm") +  
+  theme_ipsum(grid = F) +  
+  theme(legend.title = element_blank(),  
         legend.position = "bottom")
 
 
