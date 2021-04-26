@@ -1,0 +1,132 @@
+---
+title: Debt in Latin America
+author: Joao RCB
+date: '2021-04-26'
+slug: debt-in-latin-america
+categories:
+  - R
+  - debt
+  - LatAm
+tags: []
+output: html_document
+---
+
+
+Hello, people
+
+Let's take a look at the Debt-to-GDP in Latin American using the imfr package.
+
+The imfr package is a nice package that allow us to download data from the IMF's database inside R!
+
+First we load our packages of interest.
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+## IMF DATA
+library(imfr) 
+
+## for country codes. Very usefull!
+library(countrycode) 
+
+# Plots and data cleaning
+library(lubridate) 
+library(tidyverse)
+library(hrbrthemes)
+library(viridis)
+
+```
+
+Then we use imfr::imf_ids() to see the specific databases (Which is a lot).
+
+I will use data from the HPDD (Historical Public Debt Data) and codes and names of countries from the contrycode package. 
+
+
+First get the Codes:
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+data(codelist)
+
+country_set <- codelist
+country_set<- country_set %>% 
+  select(country.name.en , iso2c, iso3c, imf, continent, region) %>% filter(!is.na(imf) & !is.na(iso2c))
+
+
+```
+
+
+
+Then get the indicators of interest available at our database.
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+imf_codes(codelist = "CL_INDICATOR_HPDD")
+
+```
+
+Getting the data
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+HPDD <- tibble(
+  imf_data(database_id = "HPDD",indicator ="GGXWDG_GDP",
+           freq = 'A', start = 1950 , end = current_year())  ) 
+
+HPDD <- HPDD %>% full_join(country_set, by = "iso2c") %>% 
+  filter(region == "Latin America & Caribbean") 
+
+HPDD %>% head(n=10)
+
+```
+
+Okokok... We have our data. Now lets sub select some countries of interest, do some cleaning and finally... plot!
+
+
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+divida <- HPDD %>% 
+  filter(iso3c %in% c("ARG","BOL", "BRA","CHL","COL","ECU","PER","PRY","URY","VEN")) %>% 
+  mutate(date = year(
+    as.Date(as.character(year), format = "%Y"  )) 
+    )
+
+tmp <- divida %>% ## this is for the plot
+  mutate(iso3c2=iso3c)
+
+```
+  
+
+Plot 1!
+
+```{r echo=TRUE}
+
+divida%>% 
+ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
+  geom_line( data=tmp %>% dplyr::select(-iso3c), aes(group=iso3c2), color="grey", size=2, alpha=0.5) +
+  geom_line( aes(color=iso3c), color="black", size=2 )+
+  theme(
+    legend.position="none",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    plot.title = element_text(size=14),
+    panel.grid = element_blank()
+  )  +
+  ylab("") +
+  ggtitle("Debt to GDP ration in LatAm") +
+  theme_ipsum(grid = F) + 
+  facet_wrap(iso3c~., ncol = 4)
+
+```
+
+
+
+
+Plot 2! 
+
+```{r echo=TRUE}
+
+divida%>% 
+  ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
+  geom_line(size=2) + 
+  scale_colour_brewer(palette = "Set1") +
+  ylab("") + xlab("") +
+  ggtitle("Debt to GDP ration in LatAm") +
+  theme_ipsum(grid = F) +
+  theme(legend.title = element_blank(),
+        legend.position = "bottom")
+```
+
