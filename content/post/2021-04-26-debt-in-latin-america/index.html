@@ -54,25 +54,23 @@ country_set&lt;- country_set %&gt;%
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |==================================================                    |  72%
+  |==============================================                        |  65%
   |                                                                            
   |======================================================================| 100%
 ## 
   |                                                                            
   |                                                                      |   0%
-  |                                                                            
-  |=======                                                               |   9%
   |                                                                            
   |==================================                                    |  48%
   |                                                                            
-  |======================================                                |  54%
-  |                                                                            
   |======================================================================| 100%
 ## 
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |======================================                                |  55%
+  |=================================                                     |  47%
+  |                                                                            
+  |=======================================================               |  79%
   |                                                                            
   |======================================================================| 100%
 ## 
@@ -80,8 +78,6 @@ country_set&lt;- country_set %&gt;%
   |                                                                      |   0%
   |                                                                            
   |===========================================                           |  62%
-  |                                                                            
-  |===================================================================   |  96%
   |                                                                            
   |======================================================================| 100%
 ## 
@@ -116,7 +112,7 @@ HPDD %&gt;% head(n=10)</code></pre>
 tmp &lt;- divida %&gt;% ## this is for the plot
   mutate(iso3c2=iso3c)</code></pre>
 <p>Plot 1!</p>
-<pre class="r"><code>divida%&gt;% 
+<pre class="r"><code>p1 &lt;- divida%&gt;% 
 ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   geom_line( data=tmp %&gt;% dplyr::select(-iso3c), aes(group=iso3c2), color=&quot;grey&quot;, size=2, alpha=0.5) +
   geom_line( aes(color=iso3c), color=&quot;black&quot;, size=2 )+
@@ -130,10 +126,12 @@ ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   ylab(&quot;&quot;) +
   ggtitle(&quot;Debt to GDP ration in LatAm&quot;) +
   theme_ipsum(grid = F) + 
-  facet_wrap(iso3c~., ncol = 4)</code></pre>
+  facet_wrap(iso3c~., ncol = 4)
+
+print(p1)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Plot 2!</p>
-<pre class="r"><code>divida%&gt;% 
+<pre class="r"><code>p2 &lt;- divida%&gt;% 
   ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   geom_line(size=2) + 
   scale_colour_brewer(palette = &quot;Set1&quot;) +
@@ -141,7 +139,10 @@ ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   ggtitle(&quot;Debt to GDP ration in LatAm&quot;) +
   theme_ipsum(grid = F) +
   theme(legend.title = element_blank(),
-        legend.position = &quot;bottom&quot;)</code></pre>
+        legend.position = &quot;bottom&quot;)
+
+
+print(p2)</code></pre>
 <pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set1 is 9
 ## Returning the palette you asked for with that many colors</code></pre>
 <pre><code>## Warning: Removed 56 row(s) containing missing values (geom_path).</code></pre>
