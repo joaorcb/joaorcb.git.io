@@ -56,6 +56,8 @@ country_set&lt;- country_set %&gt;%
   |                                                                            
   |==============================================                        |  65%
   |                                                                            
+  |==================================================                    |  72%
+  |                                                                            
   |======================================================================| 100%
 ## 
   |                                                                            
@@ -70,20 +72,18 @@ country_set&lt;- country_set %&gt;%
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |======================================                                |  55%
+  |============                                                          |  17%
   |                                                                            
-  |===========================================                           |  61%
+  |===========================================================           |  85%
   |                                                                            
-  |====================================================================  |  97%
+  |================================================================      |  91%
   |                                                                            
   |======================================================================| 100%
 ## 
   |                                                                            
   |                                                                      |   0%
   |                                                                            
-  |========                                                              |  12%
-  |                                                                            
-  |===========================================                           |  62%
+  |=====================================================                 |  76%
   |                                                                            
   |======================================================================| 100%
 ## 
@@ -133,7 +133,7 @@ ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   ggtitle(&quot;Debt to GDP ration in LatAm&quot;) +
   theme_ipsum(grid = F) + 
   facet_wrap(iso3c~., ncol = 4)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>Plot 2!</p>
 <pre class="r"><code>divida%&gt;% 
   ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
@@ -147,4 +147,4 @@ ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
 <pre><code>## Warning in RColorBrewer::brewer.pal(n, pal): n too large, allowed maximum for palette Set1 is 9
 ## Returning the palette you asked for with that many colors</code></pre>
 <pre><code>## Warning: Removed 56 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="528" style="display: block; margin: auto;" /></p>

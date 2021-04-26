@@ -11,6 +11,11 @@ tags: []
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=5.5, fig.height=3, fig.align = "center") 
+```
+
 
 Hello, people
 
@@ -129,4 +134,6 @@ divida%>%
   theme(legend.title = element_blank(),
         legend.position = "bottom")
 ```
+
+
 
