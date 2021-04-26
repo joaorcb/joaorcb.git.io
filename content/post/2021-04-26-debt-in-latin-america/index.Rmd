@@ -14,6 +14,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(fig.width=5.5, fig.height=3, fig.align = "center") 
+
 ```
 
 
@@ -99,7 +100,7 @@ Plot 1!
 
 ```{r echo=TRUE}
 
-divida%>% 
+p1 <- divida%>% 
 ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   geom_line( data=tmp %>% dplyr::select(-iso3c), aes(group=iso3c2), color="grey", size=2, alpha=0.5) +
   geom_line( aes(color=iso3c), color="black", size=2 )+
@@ -115,6 +116,8 @@ ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   theme_ipsum(grid = F) + 
   facet_wrap(iso3c~., ncol = 4)
 
+print(p1)
+
 ```
 
 
@@ -124,7 +127,7 @@ Plot 2!
 
 ```{r echo=TRUE}
 
-divida%>% 
+p2 <- divida%>% 
   ggplot(aes(x=date,y= GGXWDG_GDP, group=iso3c, color=iso3c)) +
   geom_line(size=2) + 
   scale_colour_brewer(palette = "Set1") +
@@ -133,6 +136,9 @@ divida%>%
   theme_ipsum(grid = F) +
   theme(legend.title = element_blank(),
         legend.position = "bottom")
+
+
+print(p2)
 ```
 
 
